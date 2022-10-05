@@ -6,7 +6,7 @@ function App(){
     let [search, setSearch] = useState('')
     let [message, setMessage] = useState('Search for Music!')
     let [data, setData] = useState([])
-    
+
     useEffect(() => {
 		const fetchData = async () => {
 			document.title = `${search} Music`
@@ -20,14 +20,20 @@ function App(){
 		}
 		fetchData()
 	}, [search])
-	
-    return (
-        <div>
-            <SearchBar />
-            {message}
-            <Gallery />
-        </div>
-    )
+  
+	const handleSearch = (e, term) => {
+    e.preventDefault()
+    setSearch(term)
+}
+
+return (
+    <div>
+        <SearchBar handleSearch = {handleSearch} />
+        {message}
+        <Gallery />
+    </div>
+)
+
 }
 
 export default App
