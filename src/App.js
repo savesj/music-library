@@ -36,7 +36,9 @@ function App(){
         <div>
             <SearchBar handleSearch={handleSearch} />
             {message}
-            <Gallery data={data} />
+            <DataContext.Provider value={data} >
+                <Gallery />
+            </DataContext.Provider>
         </div>
     )
 }
